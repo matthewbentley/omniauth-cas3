@@ -49,7 +49,7 @@ module OmniAuth
       # As required by https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
       AuthHashSchemaKeys = %w{name email nickname first_name last_name location image phone}
       info do
-        prune!({
+        h = prune!({
           name: raw_info[options[:name_key].to_s],
           email: raw_info[options[:email_key].to_s],
           nickname: raw_info[options[:nickname_key].to_s],
@@ -59,6 +59,8 @@ module OmniAuth
           image: raw_info[options[:image_key].to_s],
           phone: raw_info[options[:phone_key].to_s]
         })
+        h[:email] ||= "#{h[:name]}@case.edu"
+        h
       end
 
       extra do
