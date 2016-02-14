@@ -60,6 +60,7 @@ module OmniAuth
           phone: raw_info[options[:phone_key].to_s]
         })
         h[:email] ||= "#{h[:name]}@case.edu"
+        puts h
         h
       end
 
