@@ -59,7 +59,8 @@ module OmniAuth
           image: raw_info[options[:image_key].to_s],
           phone: raw_info[options[:phone_key].to_s]
         })
-        h[:email] ||= "#{h[:name]}@case.edu"
+        h[:email] ||= "#{h[:nickname]}@case.edu"
+        h[:name] ||= h[:nickname]
         puts h
         h
       end
